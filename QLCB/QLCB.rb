@@ -44,15 +44,16 @@ class QLCB
         canbo = Officer.new(s_name,s_age,s_gender,s_address)
         @ds.push(canbo)
     end
-    def Search
-        for i in 0...lenght do
-            lenght=@ds.lenght
-            canbo=@ds[i]
-            if canbo.s_name == name
-                canbo.display
-                
-            end
-        end
+    def searchByName name
+        lenght = @ds.length
+        for i in 0..lenght do
+            # if @danhSachCanBo[i].getName == name
+            #     @danhSachCanBo[i].display
+            # end
+            # @danhSachCanBo[i].name
+            @ds[i].display
+        
+    end
     end
 end
 
@@ -77,6 +78,11 @@ class Main
             print "dia chi: "
             s_address=gets
             quanlycb.AddOfficer(s_name,s_age,s_gender,s_address)
+        end
+        if dem.to_i == 2
+            print "Nhap ten: "
+            ten = gets
+            quanlycb.searchByName(ten)
         end
     end
 end
