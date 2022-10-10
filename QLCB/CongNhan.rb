@@ -1,85 +1,119 @@
-class Officer
+class CanBo
     attr_accessor :name, :age, :gender, :address
-    def initialize name, age,gender,address
+
+    def initialize name, age, gender, address
         @name = name
         @age = age
         @gender = gender
-        @address = @address
+        @address = address
     end
+
     def display
-        puts ("Ten: #{@name}")
-        puts ("Tuoi: #{@age}")
-        puts ("Gioi Tinh: #{@gender}")
-        puts ("Dia Chi:  #{@address}")
+        puts "Name: #{@name}"
+        puts "Age: #{@age}"
+        puts "Gender: #{@gender}"
+        puts "Address: #{@address}"
+    end
+
+    def getName
+        return self.name
     end
 end
-class Staff < Officer
-    attr_accessor :task
-    def initialize name, age,gender,address, task
-        super(name,age,gender,address)
-        @task = task
+
+    class CongNhan < CanBo
+        attr_accessor :grade
+
+        def initialize name, age, gender, address, grade
+            super(name, age, gender, address)
+            @grade = grade
+        end
+
+        def display
+            super()
+            puts "Grade: #{@grade}"
+        end
     end
-    def display
-        super()
-        puts ("Cong vien duoc giao: #{@task}")
-    end
-end
-class Engineer < Officer
+
+class KySu < CanBo
     attr_accessor :branch
-    def initialize name, age,gender,address,branch
-        super(name, age,gender,address)
+
+    def initialize name, age, gender, address, branch
+        super(name, age, gender, address)
         @branch = branch
     end
+
     def display
         super()
-        puts ("Nganh dao tao: #{@branch}")
-    end
-end
-class Worker < Officer
-    attr_accessor :level
-    def initialize name,age,gender,address,level
-        super(name,age,gender,address)
-        @level = level
-    end
-    def display
-        super()
-        puts ("Bac Luong: #{@level}")
+        puts "Branch: #{@branch}"
     end
 end
 
-class ManagerOfficer
-    attr_accessor :ds
-    def initialize 
-        @ds = Array.new
-    end
-    def Add name,age,gender,address
-        of = Officer.new(name,age,gender,address)
-        @ds.push(of)
+class NhanVien < CanBo
+    attr_accessor :job
+
+    def initialize name, age, gender, address, job
+        super(name, age, gender, address)
+        @job = job
     end
 
+    def display
+        super()
+        puts "Job: #{@job}"
+    end
 end
+
+class QuanLyCanBo
+    attr_accessor :danhSachCanBo
+
+    def initialize
+        @danhSachCanBo = Array.new    
+    end
+
+    def addNewCanBo name, age, gender, address
+        canbo = CanBo.new(name, age, gender, address)
+        @danhSachCanBo.push(canbo)
+    end
+
+    def searchByName name
+        lenght = @danhSachCanBo.length
+        for i in 0..lenght do
+            # if @danhSachCanBo[i].getName == name
+            #     @danhSachCanBo[i].display
+            # end
+            # @danhSachCanBo[i].name
+            @danhSachCanBo[i].display
+        end
+    end
+end
+
 class Main
-    dem=0
-    mo=ManagerOfficer.new()
-    until dem==1 do
-       puts "3. them"
-       puts "2. tim kiem"
-       puts "1. thoat"
-       dem=gets
-       if dem.to_i ==1
+    counter = 0
+    quanLyCanBo = QuanLyCanBo.new()
+
+    until counter == -1 do
+        puts "1. Them"
+        puts "0. Tim kiem"
+        puts "-1. Thoat"
+        print "Nhap: "
+        counter = gets
+        if counter.to_i == -1
             exit
         end
-        if dem.to_i == 3
-            print " Nhap ten :"
-            name=gets
-            print "nhap tuoi: "
-            age=gets
-            print "gioi tinh: "
-            gender =gets
-            print "dia chi"
-            address=gets
-            mo.Add(name,age,gender,address)
+        if counter.to_i == 0
+            print "Nhap ten: "
+            ten = gets
+            quanLyCanBo.searchByName(ten)
+        end
+        if counter.to_i == 1
+            print "Nhap ten: "
+            ten = gets
+            print "Nhap tuoi: "
+            tuoi = gets
+            print "Nhap gioi tinh: "
+            gioiTinh = gets
+            print "Nhap dia chi: "
+            diaChi = gets
+            quanLyCanBo.addNewCanBo(ten, tuoi, gioiTinh, diaChi)
+        end
     end
 end
-end
-
