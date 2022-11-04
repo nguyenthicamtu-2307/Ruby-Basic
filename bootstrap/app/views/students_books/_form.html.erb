@@ -1,0 +1,72 @@
+<%= form_with(model: students_book) do |form| %>
+  <% if students_book.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(students_book.errors.count, "error") %> prohibited this students_book from being saved:</h2>
+
+      <ul>
+        <% students_book.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :Ma_HS, style: "display: block" %>
+    <%= form.text_field :Ma_HS %>
+  </div>
+
+  <div>
+    <%= form.label :Ten_HS, style: "display: block" %>
+    <%= form.text_field :Ten_HS %>
+  </div>
+
+  <div>
+    <%= form.label :Lop, style: "display: block" %>
+    <%= form.text_field :Lop %>
+  </div>
+
+  <div>
+    <%= form.label :Ma_Sach, style: "display: block" %>
+    <%= form.text_field :Ma_Sach %>
+  </div>
+
+  <div>
+    <%= form.label :Ten_Sach, style: "display: block" %>
+    <%= form.text_field :Ten_Sach %>
+  </div>
+
+  <div>
+    <%= form.label :Ten_TacGia, style: "display: block" %>
+    <%= form.text_field :Ten_TacGia %>
+  </div>
+
+  <div>
+    <%= form.label :Tu_Sach, style: "display: block" %>
+    <%= form.text_field :Tu_Sach %>
+  </div>
+
+  <div>
+    <%= form.label :So_BM, style: "display: block" %>
+    <%= form.text_field :So_BM %>
+  </div>
+
+  <div>
+    <%= form.label :NgayMuon, style: "display: block" %>
+    <%= form.datetime_field :NgayMuon %>
+  </div>
+
+  <div>
+    <%= form.label :NgayTra, style: "display: block" %>
+    <%= form.datetime_field :NgayTra %>
+  </div>
+
+  <div>
+    <%= form.label :So_Ngay, style: "display: block" %>
+    <%= form.number_field :So_Ngay %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Students books</h1>
+
+<div id="students_books">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Ma HS</th>
+      <th scope="col">Ten HS</th>
+      <th scope="col">Lop</th>
+      <th scope="col">Ma Sach</th>
+      <th scope="col">Ten Sach</th>
+      <th scope="col">Tac Gia</th>
+      <th scope="col">Tu Sach</th>
+      <th scope="col">So BM</th>
+      <th scope="col">Ngay Muon</th>
+      <th scope="col">Ngay Tra</th>
+      <th scope="col">So Ngay</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% i_253 = 1 %>
+    <% @students_books.each do |students_book_253| %>
+      <%= render :partial => 'students_books/students_book', :locals => {:index => i_253, :students_book_253 => students_book_253}%>
+      <% i_253 += 1 %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "New students book", new_students_book_path %>
